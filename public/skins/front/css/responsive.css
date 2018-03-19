@@ -1,224 +1,85 @@
 
+/* 
+    Created on : Mar 13, 2018, 10:50:12 PM
+    Author     : Nikola Kotarac
+*/
+
 @media(min-width:280px) {
 
-
-
-    .contact-image-holder {
-
-        margin-left: 0px;
-    }
-
-    .series a {
-        font-size: 15px;
-
-    }
-
-    .navbar-brand {
-
-        width: 50%;
-    }
-
-    .navbar-nav li a{
-
-        font-size: 14px;
-        text-transform: uppercase;
-    }
-
-    .navbar-nav li a.active{
-
-        color: #000 !important;
-        font-weight: bold;
-
-    }
-
-    .error > * {
-
-        width: 100%;
-    }
-
-/*    hr {
-
-        border-top: 1px solid #000;
-
-    }*/
-
     .artist h3 {
-        color: #000;
-        text-align: center;
-        font-size: 0.75em;
-        font-weight: bold;
-    }
 
-    .artist p {
-
-        font-size: 0.8rem;
-        color: #000;
+        font-size: 17px;
 
     }
 
-    .artist img {
-
-        padding-top: 10px;
-
+    a.navbar-brand > img {
+        width: 150px;
+        height: auto;
     }
 
+    .series figure {
+        height: 310px;
+
+    }
 
 }
-
-
 
 @media(min-width:320px) {
 
-    .contact-image-holder {
+    .artist h3 {
 
-        margin-left: 1px;
+        font-size: 18px;
+
     }
 
+    a.navbar-brand > img {
+        width: 200px;
+        height: auto;
+    }
+
+    .series figure {
+        height: 360px;
+
+    }
 
 }
 
-
 @media(min-width:576px){
 
-
-
-    .owl-prev{
-        left: -30px;
-        top: 30%;
-        font-size: 30px;
-
+    a.navbar-brand > img {
+        width: 300px;
+        height: auto;
     }
-
-    .owl-next{
-        right: -30px;
-        top: 30%;
-        font-size: 30px;
-    }
-    .owl-carousel a{
-        height: 400px;
-
-    }
-
     
-
-
-    .navbar-nav li a{
-
-        font-size: 16px;
+     .series figure {
+        height: 435px;
 
     }
 
-    .artist h3 {
-
-        font-size: 1em;
-
-    }
-
-    .artist p {
-
-        font-size: 0.85em;
-
-    }
-
-    .artist img {
-
-        padding-top: 5px;
-        padding-bottom: 5px;
-
-    }
 
 }
 
 @media(min-width:768px){
 
 
-
-    .series p{
-        height: 3rem;
-        overflow: hidden;
-        line-height: 1.5rem;
-    }
-
-    .navbar-nav .fa{
-        display: none;
-    }
-    .navbar-nav li{
-        position: relative;
-
-    }
-
-    .navbar-nav li a{
-        padding: 6px 20px !important;
-        font-size: 16px;
-    }
-
-
-
-    .series a {
-        font-size: 15px;
-
-    }
-
-
-    .navbar-nav li a{
-
-
-        text-transform: capitalize;
-    }
-
-    /*    .mt-md-5, .my-md-5 {
-        margin-top: 5rem !important;
-    }*/
-
-
 }
-
-
-
 
 @media(min-width:992px){
 
-/*    header a{
-        padding: 6px 20px !important;
-    }*/
 
+} 
 
-
-    
-    .owl-carousel a{
-        height: 500px;
-
-    }
-    .owl-carousel a:hover{
-        width: 70%;
-        flex-basis: 30%;
-    }
-
-    .owl-carousel a:hover img{
-        width: 100% !important;
-    }
-    .navbar-brand {
-        max-width: 300px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-
-    .series a {
-        font-size: 18px;
-
-    }
-
-
-
-}
 
 @media(min-width:1200px){
 
-    .navbar-nav li a{
+    
 
-        font-size: 16px;
+}
 
 
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
     }
 
 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Nikola Kotarac">
+        <meta name="description" content="contact page">
+        <meta name="keywords" content="artist, paintings, gallery">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Petar Smiljanic</title>
+
+        <!--FONTS CSS-->
+
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="shortcut icon" href="img/ms-icon-310x310.png" type="image/x-icon"> 
+
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!--THEME CSS-->
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
+
+        <!--CUSTOM PAGE CSS-->
+
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <!-- Main Navigation -->
+
+        <!-- Navigation Start -->
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white" id="mainNavbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="img/static1.squarespace.com.png" alt="Artist Signature">
+                </a>
+                <button class="navbar-toggler" 
+                        type="button" 
+                        data-toggle="collapse" 
+                        data-target="#navbarNav" 
+                        aria-controls="navbarNav" 
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#paintings">Paintings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- Container End -->
+        </nav><!-- Navigation End -->
+        <!-- Main Navigation End-->
+
+        <main>
+            <div class="container">
+                <div class="row paint-name" id="paintName">
+                    <div class="col-md-12">
+                        <h3><i>Attached</i></h3>
+                    </div>
+                    <div class="col-md-12" id="breadcrumb">
+                        <a href="main_page.html#paintings"><small> Paintings </small></a> | 
+                        <a href="products.html"><small> Portrait Series </small></a> | Attached
+                    </div>
+                </div>
+                <section class="paint" >
+                    <div class="row">
+                        <div class="col-12">
+                            <figure>
+                                <a href="full_page_paint.html">
+                                    <img src="img/0.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Art Description</h4>
+                    </div>
+                </div>
+                <section class="art-description">
+                    <div class="row">
+                        <div class="col-12 text-justify">
+                            <p>
+                                <i>"Attached"</i>
+                                <br>
+                                Size: 39.4 H x 31.5 W x 1.2 in
+                                <br>
+                                Year: 2017
+                                <br>
+                                Series: 
+                                <a href="products.html">Portrait Series</a>
+                                <br><br>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Pellentesque nec nibh vitae lorem feugiat gravida. Integer molestie urna a leo vestibulum aliquam. 
+                                Ut ultrices molestie aliquet. Sed vitae dui eu arcu posuere facilisis. Aenean tempor felis id bibendum pellentesque. 
+                                Ut auctor porttitor dui ut condimentum. Fusce tellus massa, tempus sed sodales vestibulum, gravida sed dolor. 
+                                Morbi erat lorem, vehicula eu sagittis quis, eleifend et quam. Ut ac nunc non tortor ultrices mattis. 
+                                Aenean accumsan neque elit, sit amet pellentesque mauris elementum et. Proin in lacus vitae dolor tempus ullamcorper.    
+                            </p>  
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-5">
+            <button id="smooth-scrolling" type="button" class="btn btn-light">
+                Back to Top
+            </button>
+            <div class="copyright">
+                <small>&copy; 2018. Petar Smiljanic</small>
+            </div>
+            <div class="social">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>
+        </footer><!-- Footer End -->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/poper.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+
+        <!--CUSTOM PAGE JS-->
+
+
+        <script src="js/main.js" type="text/javascript"></script>
+
+        <script>
+
+
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 50) {
+                        $('#smooth-scrolling').fadeIn('slow');
+                    } else {
+                        $('#smooth-scrolling').fadeOut('slow');
+                    }
+                });
+                $('#smooth-scrolling').click(function () {
+                    $("html, body").animate({scrollTop: 0}, 1000);
+                    return false;
+                });
+            });
+
+
+        </script>
+
