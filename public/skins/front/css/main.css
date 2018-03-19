@@ -1,8 +1,4 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
+
 /* 
     Created on : Mar 13, 2018, 10:49:54 PM
     Author     : Nikola Kotarac
@@ -263,6 +259,17 @@ a.navbar-brand > img {
 .btn-dark {
     float:right;
     background-color: #000;
+}
+
+#contact a {
+    
+    text-decoration: none;
+    color:#003399;
+}
+
+#contact a:hover {
+    
+    color:#000;
 }
 
 /********SERIES PAGE******/
