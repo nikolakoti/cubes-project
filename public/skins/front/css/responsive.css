@@ -47,8 +47,8 @@
 @media(min-width:576px){
 
     a.navbar-brand > img {
-        width: 300px;
-        height: auto;
+        width: 350px;
+        height: 80px;
     }
     
      .series figure {
