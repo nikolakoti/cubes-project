@@ -430,10 +430,16 @@ img{
 }
 
 #fullPagePaint {
-    padding-top: 30px;
-    padding-bottom: 35px;
+    padding-top: 20px;
+    padding-bottom: 10px;
     padding-left: 0px;
     padding-right: 0px;
+    
+}
+
+.fullPaint {
+    
+    background-color: #fff !important;
 }
 
 /********FOOTER******/

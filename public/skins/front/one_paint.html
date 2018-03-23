@@ -38,9 +38,9 @@
         <!-- Main Navigation -->
 
         <!-- Navigation Start -->
-        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white" id="mainNavbar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-transparent" id="mainNavbar">
+            <div class="container-fluid" id="containerNav">
+                <a class="navbar-brand" href="#" style="display:none;">
                     <img src="img/Logo Petar.jpg" alt="Artist Signature">
                 </a>
                 <button class="navbar-toggler" 
@@ -72,6 +72,7 @@
                 </div>
             </div><!-- Container End -->
         </nav><!-- Navigation End -->
+
         <!-- Main Navigation End-->
 
         <main>
@@ -115,10 +116,10 @@
                                 <div class="col-12">
                                     <h5>$2,350.00 USD</h5>
                                     <button type="button" class="button-cart">
-                                        
+
                                         Add to 
                                         <i class="fa fa-shopping-cart"></i>
-                                        
+
                                     </button>
                                 </div>
                                 <div class="col-12">
@@ -197,16 +198,30 @@
 
         <script>
 
+            $(document).ready(function () {
+
+                $(window).on('scroll', function () {
+
+                    var targetElement = $('#mainNavbar');
+
+                    var container = $('#containerNav');
+
+                    var logo = container.find('a.navbar-brand');
+
+                    if ($(this).scrollTop() >= 0) {
+
+                        logo.removeAttr('style');
+
+                        targetElement.removeClass('bg-transparent');
+
+                        targetElement.addClass('bg-white');
+
+                    }
+                }).trigger('scroll');
+            });
 
             $(document).ready(function () {
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 50) {
-                        $('#smooth-scrolling').fadeIn('slow');
-                    } else {
-                        $('#smooth-scrolling').fadeOut('slow');
-                    }
-                });
-                $('#smooth-scrolling').click(function () {
+                $('#smooth-scrolling').on('click', function () {
                     $("html, body").animate({scrollTop: 0}, 1000);
                     return false;
                 });

@@ -292,15 +292,9 @@
                 }).trigger('scroll');
             });
 
-            $(document).ready(function () {
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 50) {
-                        $('#smooth-scrolling').fadeIn('slow');
-                    } else {
-                        $('#smooth-scrolling').fadeOut('slow');
-                    }
-                });
-                $('#smooth-scrolling').click(function () {
+             $(document).ready(function () {
+
+                $('#smooth-scrolling').on('click', function () {
                     $("html, body").animate({scrollTop: 0}, 1500);
                     return false;
                 });

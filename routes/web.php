@@ -11,13 +11,18 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/series/{id}/{slug}', 'SeriesController@index')->name('series');
+
+Route::get('/paint/{id}', 'PaintController@index')->name('paint');
 
 
-Route::get('/contact-us', 'ContactController@show')->name('contact-us');
-Route::post('/contact-us', 'ContactController@process');
 
-Route::get('/page/{id}/{slug?}', 'StaticPagesController@page')->name('static-page');
+//Route::get('/contact-us', 'ContactController@show')->name('contact-us');
+//Route::post('/contact-us', 'ContactController@process');
+//
+//Route::get('/page/{id}/{slug?}', 'StaticPagesController@page')->name('static-page');
 
 // ADD FRONTEND ROUTES HERE
 

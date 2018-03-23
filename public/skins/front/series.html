@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Nikola Kotarac">
-        <meta name="description" content="products page">
+        <meta name="description" content="series page">
         <meta name="keywords" content="artist, paintings, gallery">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Portrait Series | Petar Smiljanic Art </title>
@@ -26,7 +26,7 @@
 
         <!--CUSTOM PAGE CSS-->
 
-        <link href="css/jquery.fancybox.min.css" rel="stylesheet" type="text/css"/>
+       
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,9 +40,9 @@
         <!-- Main Navigation -->
 
         <!-- Navigation Start -->
-        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white" id="mainNavbar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-transparent" id="mainNavbar">
+            <div class="container-fluid" id="containerNav">
+                <a class="navbar-brand" href="#" style="display:none;">
                     <img src="img/Logo Petar.jpg" alt="Artist Signature">
                 </a>
                 <button class="navbar-toggler" 
@@ -297,9 +297,7 @@
 
         <!--CUSTOM PAGE JS-->
 
-        <script src="js/owl.carousel.min.js" type="text/javascript"></script>
-        <script src="js/jquery.fancybox.min.js" type="text/javascript"></script>
-        <script src="js/jquery.lazy.min.js" type="text/javascript"></script>
+     
 
 
 
@@ -308,15 +306,30 @@
 
         <script>
 
+            $(document).ready(function () {
+
+                $(window).on('scroll', function () {
+
+                    var targetElement = $('#mainNavbar');
+
+                    var container = $('#containerNav');
+
+                    var logo = container.find('a.navbar-brand');
+
+                    if ($(this).scrollTop() >= 0) {
+
+                        logo.removeAttr('style');
+
+                        targetElement.removeClass('bg-transparent');
+
+                        targetElement.addClass('bg-white');
+
+                    }
+                }).trigger('scroll');
+            });
 
             $(document).ready(function () {
-                $(window).on('scroll', function () {
-                    if ($(this).scrollTop() > 50) {
-                        $('#smooth-scrolling').fadeIn('slow');
-                    } else {
-                        $('#smooth-scrolling').fadeOut('slow');
-                    }
-                });
+
                 $('#smooth-scrolling').on('click', function () {
                     $("html, body").animate({scrollTop: 0}, 1500);
                     return false;
