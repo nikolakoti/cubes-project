@@ -17,8 +17,9 @@
         <i class="fa fa-table"></i> Add Painting
     </div>
     <div class="card-body">
-
-        <form action="" method="post" enctype="multipart/form-data">
+{{$errors->count() > 0 ? print_r($errors->all(), true): ''}}
+        <form 
+            action="" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="row">
                 <fieldset class="col-lg-6">
@@ -47,7 +48,7 @@
 
                     <div class="form-group">
                         <label>Name</label> 
-                        <input value="{{old('name')}}" name="name" placeholder="Enter Name" required="required" class="form-control" type="text"> 
+                        <input id="form-group" value="{{old('name')}}" name="name" placeholder="Enter Name" required="required" class="form-control" type="text"> 
                         @if($errors->has('name'))
                         <div class="form-errors text-danger">
                             @foreach($errors->get('name') as $errorMessage)

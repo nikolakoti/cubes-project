@@ -103,7 +103,7 @@
     <div class="container">
         <nav class="navbar navbar-light bg-transparent" id="fullPagePaint">
             <a class="navbar-brand" href="{{route('home')}}">
-                <img src="{{url('/skins/front/img/Logo Petar.jpg')}}" alt="Artist Signature">
+                <img src="{{url('/skins/front/img/artist_signature.jpg')}}" alt="Artist Signature">
             </a>
             <button 
                 type="button" 

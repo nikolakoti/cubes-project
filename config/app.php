@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://cubes-cms.local'),
+    'url' => env('APP_URL', 'http://polaznik07.phpkurs.cubes.rs'),
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +104,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:WS9VVZAF+1tG/kFPnY3d8C36Xa/QMhvIJCZTKQ0uBAw='),
 
     'cipher' => 'AES-256-CBC',
 

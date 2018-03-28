@@ -33,13 +33,15 @@ class PaintingsController extends Controller {
 
         $request = request();
 
+        
+        
         $formData = $request->validate([
             'one_series_id' => 'required|exists:series,id',
             'name' => 'required|string|min:5|max:20',
-            'size' => 'required|string|min:5|max:20',
-            'year' => 'required|string|min:4',
-            'price' => 'required|string|min:5|max:20',
-            'decsription' => 'present'
+            'size' => 'required',
+            'year' => 'required',
+            'price' => 'required',
+            'description' => 'present'
 //            'painting_photo_file' => 'image|mimes:jpeg|max:10240'
         ]);
         
