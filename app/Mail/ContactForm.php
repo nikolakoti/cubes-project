@@ -13,7 +13,7 @@ class ContactForm extends Mailable
 	
 	protected $contactName;
 	protected $contactEmail;
-	protected $contactQuestion;
+	protected $contactMessage;
 	
 	
     /**
@@ -21,12 +21,41 @@ class ContactForm extends Mailable
      *
      * @return void
      */
-    public function __construct($contactName, $contactEmail, $contactQuestion) {
-		$this->contactName = $contactName;
-		$this->contactEmail = $contactEmail;
-		$this->contactQuestion = $contactQuestion;
+    public function __construct($contactName, $contactEmail, $contactMessage) {
+		$this->setContactName($contactName);
+		$this->setContactEmail($contactEmail);
+		$this->setContactMessage($contactMessage);
 	}
+        
+        
+        public function getContactName() {
+            return $this->contactName;
+        }
 
+        public function getContactEmail() {
+            return $this->contactEmail;
+        }
+
+        public function getContactMessage() {
+            return $this->contactMessage;
+        }
+
+        public function setContactName($contactName) {
+            $this->contactName = $contactName;
+            return $this;
+        }
+
+        public function setContactEmail($contactEmail) {
+            $this->contactEmail = $contactEmail;
+            return $this;
+        }
+
+        public function setContactMessage($contactMessage) {
+            $this->contactMessage = $contactMessage;
+            return $this;
+        }
+
+        
 	    /**
      * Build the message.
      *
@@ -34,10 +63,11 @@ class ContactForm extends Mailable
      */
     public function build()
     {
-        return $this->from($this->contactEmail, $this->contactName)
+        return $this->from($this->getContactEmail(), $this->getContactName())
 				->view('emails.contact-form', [
-					'contactName' => $this->contactName,
-					'contactQuestion' => $this->contactQuestion
+					'contactName' => $this->getContactName(),
+                                        'contactEmail' => $this->getContactEmail(),
+					'contactMessage' => $this->getContactMessage()
 				]);
     }
 }

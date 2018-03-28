@@ -4,7 +4,7 @@
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-transparent" id="mainNavbar">
     <div class="container-fluid" id="containerNav">
         <a class="navbar-brand" href="{{route('home')}}" style="display:none;">
-            <img src="{{url('/skins/front/img/Logo Petar.jpg')}}" alt="Artist Signature">
+            <img src="{{url('/skins/front/img/artist_signature.jpg')}}" alt="Artist Signature">
         </a>
         <button class="navbar-toggler" 
                 type="button" 

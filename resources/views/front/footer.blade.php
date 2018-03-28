@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="text-center mt-5">
+<footer id="footer" class="text-center mt-5">
     <button id="smooth-scrolling" type="button" class="btn btn-light">
         Back to Top
     </button>

@@ -10,12 +10,14 @@ class SeriesController extends Controller
 {
     public function index($id, $slug = '') {
         
-        $series = Series::findOrFail($id);
+        $oneSeries = Series::findOrFail($id);
         
+        $series = Series::all();
                
         return view('front.series.index', [
             
-            'series' => $series 
+            'oneSeries' => $oneSeries,
+            'series' => $series
         ]);
         }
     

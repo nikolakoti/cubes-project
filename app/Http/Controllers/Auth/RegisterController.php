@@ -72,12 +72,12 @@ class RegisterController extends Controller
 	
 	// Zabrana registracije novih korisnika sa frontend-a
 	
-	public function showRegistrationForm() {
-		
-		return abort(404);
-	}
-	
-	public function register(Request $request) {
-		return abort(404);
-	}
+//	public function showRegistrationForm() {
+//		
+//		return abort(404);
+//	}
+//	
+//	public function register(Request $request) {
+//		return abort(404);
+//	}
 }

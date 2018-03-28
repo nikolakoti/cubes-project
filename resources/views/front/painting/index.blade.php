@@ -1,52 +1,58 @@
 @extends('front.layout')
 
+@section('head_title', $painting->name . ' ' .
+' | ' . trans('front.painting_title'))
+
 @section('content')
 
-<main>
+<main id="onePaintDetails">
     <div class="container">
         <div class="row paint-name" id="paintName">
             <div class="col-md-12">
-                <h3><i>Purple_Void</i></h3>
+                <h3><i>{{$painting->name}}</i></h3>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12" id="breadcrumbs">
-                <a href="main_page.html#paintings"><small> Paintings </small></a> | 
-                <a href="series.html"><small> Portrait Series </small></a> | Purple_Void
+                <a href="{{route('home') . '#paintings'}}"><small> Paintings </small></a> | 
+
+
+                <a href="{{$painting->frontendSeriesUrl()}}"><small>{{$painting->series->series_name}}</small></a>
+
+
+                |<span> {{$painting->name}}</span>
             </div>
         </div>
         <section class="paint" >
             <div class="row">
                 <div class="col-sm-12 col-md-8">
-                    <figure>
-                        <a href="">
-                            <img src="{{url('skins/front/img/pink_void_100x80.jpg')}}">
-                        </a>
+                    <figure id="pointer">
+
+                        <img src="{{url('skins/front/img/' . $painting->img_photo_name)}}">
+
                     </figure>
                 </div>
                 <div class="col-sm-12 col-md-4">
                     <div class="row paint-details">
                         <div class="col-12">
-                            <h3>Purple_Void</h3>
+                            <h3>{{$painting->name}}</h3>
                             <p>
-                                <a href="series.html">
-                                    Portrait Series
+                                <a href="{{$painting->frontendSeriesUrl()}}">
+                                    {{$painting->series->series_name}}
                                 </a><br>
                                 Painting<br>
                                 <small>
-                                    Size: "39.4" x "31.5"cm
+                                    Size: {{$painting->size}}cm
                                 </small>
                                 <br>
                                 <i><small>Shipping Info</small></i>
                             </p> 
                         </div>
                         <div class="col-12">
-                            <h5>$2,350.00 USD</h5>
+                            <h5>${{$painting->price}} USD</h5>
                             <button type="button" class="button-cart">
-
                                 Add to 
                                 <i class="fa fa-shopping-cart"></i>
-
                             </button>
                         </div>
                         <div class="col-12">
@@ -75,27 +81,46 @@
             <div class="row">
                 <div class="col-12 text-justify">
                     <p>
-                        <i>"Purple_Void"</i>
+                        <i>"{{$painting->name}}"</i>
                         <br>
-                        Size: "39.4" x "31.5"cm
+                        Size: {{$painting->size}}cm
                         <br>
-                        Year: 2017
+                        Year: {{$painting->year}}
                         <br>
                         Series: 
-                        <a href="series.html">Portrait Series</a>
+                        <a href="{{$painting->frontendSeriesUrl()}}">{{$painting->series->series_name}}</a>
                         <br><br>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Pellentesque nec nibh vitae lorem feugiat gravida. Integer molestie urna a leo vestibulum aliquam. 
-                        Ut ultrices molestie aliquet. Sed vitae dui eu arcu posuere facilisis. Aenean tempor felis id bibendum pellentesque. 
-                        Ut auctor porttitor dui ut condimentum. Fusce tellus massa, tempus sed sodales vestibulum, gravida sed dolor. 
-                        Morbi erat lorem, vehicula eu sagittis quis, eleifend et quam. Ut ac nunc non tortor ultrices mattis. 
-                        Aenean accumsan neque elit, sit amet pellentesque mauris elementum et. Proin in lacus vitae dolor tempus ullamcorper.    
+                        {{$painting->description}} 
                     </p>  
                 </div>
             </div>
         </section>
     </div>
 
+</main>
+
+<main class="fullPaint" style="display: none;">
+    <div class="container">
+        <nav class="navbar navbar-light bg-transparent" id="fullPagePaint">
+            <a class="navbar-brand" href="{{route('home')}}">
+                <img src="{{url('/skins/front/img/Logo Petar.jpg')}}" alt="Artist Signature">
+            </a>
+            <button 
+                type="button" 
+                class="btn btn-secondary" 
+                data-toggle="tooltip" 
+                data-placement="bottom" 
+                title="Close"
+                >
+                <b>x</b>
+            </button>
+        </nav>
+        <div class="full-page-paint">
+            <a href="">
+                <img src="{{url('skins/front/img/' . $painting->img_photo_name)}}">
+            </a>
+        </div>
+    </div>
 </main>
 
 @endsection
@@ -131,6 +156,33 @@
         $('#smooth-scrolling').on('click', function () {
             $("html, body").animate({scrollTop: 0}, 1000);
             return false;
+        });
+    });
+
+    $(document).ready(function () {
+
+        $('#pointer').on('click', function () {
+
+            $('#mainNavbar').hide();
+            $('#onePaintDetails').hide();
+            $('#footer').hide();
+            $('main.fullPaint').removeAttr('style');
+        });
+    });
+
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $(document).ready(function () {
+        var targetElement = $('[data-toggle="tooltip"]');
+
+        var currentPageURL = window.location.pathname;
+        
+        $(targetElement).on('click', function () {
+            window.location.href = currentPageURL;
+
+
         });
     });
 

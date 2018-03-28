@@ -8,7 +8,7 @@
         <meta name="description" content="contact page">
         <meta name="keywords" content="artist, paintings, gallery">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Welcome | Petar Smiljanic Art</title>
+        <title>@yield('head_title') | {{trans('front.main_title')}}</title>
 
         <!--FONTS CSS-->
 
@@ -50,7 +50,7 @@
         <script src="{{url('/skins/front/js/jquery.min.js')}}" type="text/javascript"></script>
         <script src="{{url('/skins/front/js/poper.js')}}" type="text/javascript"></script>
         <script src="{{url('/skins/front/js/bootstrap.min.js')}}"></script>
-
+        <script src="{{url('/skins/front/js/jquery.validate.min.js')}}" type="text/javascript"></script>
 
         <!--CUSTOM PAGE JS-->
 

@@ -1,6 +1,8 @@
 
 @extends('front.layout')
 
+@section('head_title', trans('front.home-page_title'))
+
 @section('content')
 <!-- Intro Image -->
 <div class="bgimg-1 container-fluid"></div><!-- Intro image -->
@@ -113,29 +115,33 @@
                 </figure>
             </div>
             <div class="col-md-7">
-                <form method="post" action="" class="contact-form">
+                <form method="post" action="" class="form-control" id="contactForm">
+
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group" id="labelName">
                                 <label>Name*</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="contactName" class="form-control">
                                 <div class="error"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group" id="labelEmail">
                                 <label>Email Address*</label>
-                                <input type="text" name="email" class="form-control text-muted">
+                                <input type="text" name="contactEmail" class="form-control text-muted">
                                 <div class="error"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="labelMessage">
                         <label>Message*</label>
-                        <textarea name="message" class="form-control"></textarea>
+                        <textarea name="contactMessage" class="form-control"></textarea>
                         <div class="error"></div>
                     </div>
-                    <button type="submit" class="btn btn-dark px-4 mt-3">Submit</button>
+                    <button type="submit" class="btn btn-dark px-4 mt-3" data-action="submit">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>  
+                        Send Message
+                    </button>
                 </form>
             </div>
         </div>
@@ -146,6 +152,59 @@
 @push('footer_javascript')
 
 <script>
+
+    $(document).ready(function () {
+
+        $(".form-control").validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass("has-danger");
+                $(element).addClass("form-control-danger");
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
+                $(element).removeClass('form-control-danger').addClass('form-control-success');
+            },
+            rules: {
+                contactName: {
+                    required: true,
+                    rangelength: [3, 50]
+                },
+
+                contactEmail: {
+                    required: true,
+                    email: true
+                },
+
+                contactMessage: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                contactName: {
+                    required: "Name field is required!",
+                    rangelength: "Name must be between 3 and 50 characters!"
+                },
+
+                contactEmail: {
+                    required: "Email field is required!",
+                    email: "Please enter a valid email address!"
+                },
+
+                contactMessage: {
+                    required: "Message field is required!",
+                    minlength: "Message must have at least 5 characters!"
+                }
+            },
+            errorElement: 'p',
+            errorPlacement: function (error, element) {
+                error.appendTo($(element).closest('.form-group').find('.error'));
+            }
+        });
+
+
+    });
+    //Form Validation
 
     $(document).ready(function () {
 
@@ -176,15 +235,15 @@
             }
         }).trigger('scroll');
     });
-    
-    $(document).ready(function() {
-        
-        $(window).on('scroll', function() {
-           
-           if($(this).scrollTop() === 0) {
-               window.location = "/home";
-           }
-          
+
+    $(document).ready(function () {
+
+        $(window).on('scroll', function () {
+
+            if ($(this).scrollTop() === 0) {
+                window.location.href = "/";
+            }
+
         });
     });
 
@@ -195,8 +254,8 @@
             return false;
         });
     });
-
-
+    
+    
 
 </script>
 

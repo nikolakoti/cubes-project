@@ -10,7 +10,7 @@ use App\Mail\ContactForm;
 
 class ContactController extends Controller
 {
-	public function show() {
+	public function showResponse() {
 		
 		$systemMessage = session()->get('systemMessage');
 		
@@ -24,16 +24,16 @@ class ContactController extends Controller
 		$request = request();
 		
 		$formData = $request->validate([
-			'contact_name' => 'required|min:2|max:20',
-			'contact_email' => 'required|email',
-			'contact_question' => 'required|min:5|max:255',
+			'contactName' => 'required|string|min:2|max:20',
+			'contactEmail' => 'required|email',
+			'contactMessage' => 'required|string|min:5|max:255',
 		]);
 		
 		//sending email logic
-		Mail::to('example@example.com')->send(new ContactForm(
-			$formData['contact_name'],
-			$formData['contact_email'],
-			$formData['contact_question']
+		Mail::to('koti.matic@gmail.com')->send(new ContactForm(
+			$formData['contactName'],
+			$formData['contactEmail'],
+			$formData['contactMessage']
 		));
 		
 		return redirect()

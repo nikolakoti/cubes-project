@@ -9,7 +9,13 @@ class Series extends Model {
     
     protected $primaryKey = 'id';
     
-    protected $fillable = ['series_name', 'description', 'series_photo_filename'];
+    protected $fillable = ['series_name'];
+    
+    
+    public function paintings() {
+        
+        return $this->hasMany(\App\Models\Painting::class, 'one_series_id');
+    }
     
     
     public function frontendUrl() {

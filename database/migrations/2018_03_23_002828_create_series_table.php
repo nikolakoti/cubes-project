@@ -17,7 +17,7 @@ class CreateSeriesTable extends Migration
             $table->increments('id');
             $table->string('series_name');
             $table->longText('description')->nullable();
-            $table->string('series_photo_filename');
+            $table->string('series_photo_filename')->nullable();
             $table->timestamps();
         });
     }
