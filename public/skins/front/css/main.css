@@ -8,16 +8,34 @@ and open the template in the editor.
     Author     : Nikola Kotarac
 */
 
-*{
-    font-family: 'Lato', sans-serif;
+
+body {
+
+    background: #ffffff;
+    color: #898989;
+    font-family: 'Poppins', helvetica;
+    font-size: 15px;
+    font-weight: 200;
+    /*    line-height: 20px;
+        letter-spacing: 0.02em;*/
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
 }
 
 body, html {
     height: 100%;
-    line-height: 1.8;
-    background-color: whitesmoke;
+    line-height: 1.6;
     margin: 0;
 }
+
+
 
 .bgimg-1, .bgimg-2, .bgimg-3 {
     background-attachment: fixed;
@@ -53,13 +71,14 @@ body, html {
 }
 
 .artist, .series, .contact {
-    padding-top: 110px;
-    padding-bottom: 50px;
-}
-
+    padding-top: 115px;
+    
+} 
 
 
 /********NAVIGATION******/
+
+
 
 .bg-transparent .navbar-nav .nav-link {
     letter-spacing: 2px !important;
@@ -69,41 +88,49 @@ body, html {
 
 .bg-white {
     overflow: hidden;
-    z-index: 9999;
-    box-shadow: 0 0 4px rgba(0,0,0,0.4);
-    animation: animatetop 0.6s;
+    z-index: 1000;
+    -webkit-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.18);
+    -moz-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.18);
+    box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.18);
     opacity: 0.98;
-}
-
-@keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0;
-    }
-    to {
-        top: 0px;
-    }
 }
 
 
 .navbar-light .navbar-nav .nav-link {
-    letter-spacing: 2px;
-    font-weight: 200;
-    color: #000;
+    font-size: 14px;
+    color: #999999;
+    font-family: 'Poppins', helvetica;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.02em !important;
+    text-transform: capitalize;
 }
 
 .navbar-light 
 .navbar-nav .nav-link:hover {
 
-    color: #ddd;
+    color: #b8a07e;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
 }
 
 .navbar-light 
 .navbar-nav .active > .nav-link:hover {
 
-    color: #000;
+    color: #b8a07e;
 
 }
+
+.navbar-light 
+.navbar-nav .active {
+
+    color: #b8a07e;
+}
+
+
 
 /************ABOUT SECTION************/
 
@@ -118,12 +145,22 @@ body, html {
     margin: 10px 0;
     font-weight: 400;
     font-size: 18px;
-    color: #000;
+    color: #b8a07e;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
 }
 
 .artist p{
     font-size: 0.9rem;
     color:#777;
+}
+
+#biography strong {
+    
+    color:#b8a07e;
 }
 
 /********PAINTINGS SECTION******/
@@ -132,7 +169,12 @@ body, html {
     margin: 10px 0;
     font-weight: 400;
     font-size: 18px;
-    color: #777777;
+    color: #b8a07e;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
 }
 
 .series p{
@@ -234,13 +276,14 @@ body, html {
 .caption {
     width: 100%;
     position: absolute;
-    bottom: 2px;
+    bottom: 7px;
     z-index: 2;
     color: #000;
     left: 0;
     right: 0;
-    background:whitesmoke;
+    background:#ffffff;
     opacity: 0.4;
+    justify-content: space-around;
 
 }
 
@@ -256,32 +299,52 @@ body, html {
     margin: 10px 0;
     font-weight: 400;
     font-size: 18px;
-    color: #777;
+    color: #b8a07e;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
 }
 
 .btn-dark {
-    float:right;
-    background-color: #000;
+
+    width: 100%;
+    background-color: #333;
     border-radius: 0;
+    border: medium none;
+    color: #fff;
+    font-size: 12px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 30px;
+    text-transform: uppercase;
+
+
 }
+
 .form-control {
 
     border-radius: 0;
     background-color: transparent;
     border:none;
+    font-size: 14px;
 
 }
 
 .form-control:focus{
     box-shadow: none;
-    border-color:#000;
+    border-color:#88afd8;
 }
 
 .form-control input, .form-control textarea {
 
     border-radius: 0;
     background-color: transparent;
-    border: 1px solid #777;
+    border: 1px solid #999999;
+    height: 50px;
+    color: #999999;
+    font-size: 12px;
 }
 
 .form-control-success,
@@ -362,44 +425,26 @@ body, html {
 
 .error {
 
-    display:block;
+    color: red;
+    font-weight: 400;
+    font-size: 13px;
+    display:none;
     width: 100%;
 }
 
-.error > *{
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #CC3B3B;
-    background-image: url("http://static.squarespace.com/universal/images-v6/standard/icon_close_7_light.png");
-    background-origin: padding-box;
-    background-position: 9px 50%;
-    background-repeat: no-repeat;
-    background-size: auto auto;
-    color: rgb(255, 255, 255);
-    display: inline-block;
-    flex-basis: auto;
-    flex-grow: 0;
-    flex-shrink: 1;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 23px;
-    margin-bottom: 6.5px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 12px;
-    padding-bottom: 4px;
-    padding-left: 25px;
-    padding-right: 15px;
-    padding-top: 3px;
+.error p {
 
+    margin-bottom: 0;
 }
+
+
+
 
 
 /********SERIES PAGE******/
 
 img{
-    max-width: 100%;
+    width: 100%;
     display: block;
 }
 
@@ -409,20 +454,14 @@ img{
 
 .item-wrapper figure {
 
-    margin-bottom: 0;
-    background-color: #fff;
-    padding:20px 20px 10px 20px;
-    box-shadow: 0 8px 6px -6px black;
+    margin: 0 !important;
+
 }
 
 .item-wrapper figure img:hover {
     opacity: 0.95;
 }
 
-.row-series-name {
-
-    padding: 20px 0;
-}
 
 #categoryTitle {
 
@@ -432,57 +471,37 @@ img{
 
 }
 
-#categoryTitle > hr {
-
-    border-top: 0.3125rem solid #e9e9e9;
-    margin-top: 1rem;
-}
-
-#categoryTitle h4 {
-
-    font-weight: 300;
-}
-
-#categoryTitle h4 > a:hover {
-
-    text-decoration: none;
-}
-
-.decoration hr {
-
-    border: 1px solid #fff;
-}
-
-.col-md-12 > p {
-
-    color:#777;
-}
-
 #breadcrumbsCategory {
 
     padding: 40px 0 0 0;
 }
 
-#breadcrumbs {
+#artist-statement strong {
 
-    padding-bottom: 20px;
+    color: #b8a07e;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
 }
 
-#paintDetails {
+#collection-holder p {
 
-    position: relative; 
-    display: inline-block; 
-    float:left; 
-    margin-top: 10px;
+    font-size: 13px;
+    color: #777;
+    /*    -moz-transition: all 0.5s ease-in-out 0s;
+        -ms-transition: all 0.5s ease-in-out 0s;
+        -o-transition: all 0.5s ease-in-out 0s;
+        -webkit-transition: all 0.5s ease-in-out 0s;
+        transition: all 0.5s ease-in-out 0s;*/
 }
 
-#paintPrice {
+.text-left {
 
-    position: relative; 
-    display: inline-block; 
-    float: right; 
-    margin-top: 10px;
+    padding-top: 2px !important;
 }
+
 
 /********ONE PAINT PAGE******/
 
@@ -587,28 +606,36 @@ img{
     height: 35px;
     display: inline-block;
     border-radius: 50%;
-    background: #000;
-    color:#fff;
+    background: transparent;
+    color:#b8a07e;
     line-height: 35px;
     font-size: 22px;
-    transition: 0.7s ease;
+    transition: 0.5s ease;
 }
 .social .fa:hover{
     transform: rotate(360deg);
     text-decoration: none;
+    color:#000;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
 }
 
 footer {
 
     padding-top: 30px;
     padding-bottom: 10px;
-    background-color: #000;
+    background: #f7f7f7;
+
 
 }
 
 footer small {
 
-    color:#fff;
+    color: #999;
+
 }
 
 
@@ -620,8 +647,43 @@ footer small {
 
     border: transparent;
     border-radius: 0px !important;
+    color: #b8a07e;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+} 
+
+.btn-light:hover {
+
+    background-color: #f7f7f7;
 }
 
 #pointer {
     cursor: pointer;
+}
+
+#loader {
+
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    overflow: visible;
+    background: url('../img/ajax/ajax-loader.gif') no-repeat center center;
+    display: none;
+}
+
+#contact figure {
+
+    max-width: 100%;
+}
+
+.fa-navicon {
+    
+    color:#898989;
+    
 }

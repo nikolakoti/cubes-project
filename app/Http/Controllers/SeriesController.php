@@ -3,22 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Series;
+use App\Models\Painting;
 
-class SeriesController extends Controller
-{
+class SeriesController extends Controller {
+
     public function index($id, $slug = '') {
-        
+
         $oneSeries = Series::findOrFail($id);
-        
-        $series = Series::all();
-               
+
         return view('front.series.index', [
-            
             'oneSeries' => $oneSeries,
-            'series' => $series
+            
         ]);
-        }
-    
+    }
+
+    public function ajax($id) {
+
+
+
+        $oneSeries = Series::findOrFail($id);
+
+
+
+        return response()->json([
+                    'paintings' => $oneSeries->paintings,
+                    'artistStatement' => $oneSeries->description
+        ]);
+    }
+
 }

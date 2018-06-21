@@ -17,7 +17,7 @@
         <i class="fa fa-table"></i> Add Painting
     </div>
     <div class="card-body">
-{{$errors->count() > 0 ? print_r($errors->all(), true): ''}}
+
         <form 
             action="" method="post" enctype="multipart/form-data">
             {{csrf_field()}}

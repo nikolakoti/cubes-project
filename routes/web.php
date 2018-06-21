@@ -17,13 +17,13 @@ Route::get('/series/{id}/{slug?}', 'SeriesController@index')->name('series');
 
 Route::get('/painting/{id}/{slug?}', 'PaintingsController@index')->name('paint');
 
+Route::get('/ajax/series/{id}', 'SeriesController@ajax')->name('series.ajax');
 
 
+Route::post('/contact', 'ContactController@process')->name('contact');
+Route::get('/contact', 'ContactController@message')->name('contact');
 
 
-
-//Route::get('/contact-us', 'ContactController@show')->name('contact-us');
-//Route::post('/contact-us', 'ContactController@process');
 //
 //Route::get('/page/{id}/{slug?}', 'StaticPagesController@page')->name('static-page');
 

@@ -45,7 +45,9 @@ class PaintingsController extends Controller {
 //            'painting_photo_file' => 'image|mimes:jpeg|max:10240'
         ]);
         
-        dd($formData);
+       $painting = new Painting($formData);
+       
+       $painting->save();
 
        
         return redirect()->route('admin.paintings.index')

@@ -5,45 +5,38 @@
 @section('content')
 
 <!--MAIN Start-->
-<main>
+<main id="series" style="background-color: #f7f7f7;">
+
     <!-- CONTAINER SERIES NAME -->
     <div class="container" id="categoryTitle">
         <div class="col-md-12 text-muted" id="breadcrumbsCategory">
             <a href="{{route('home')}}"><small> Home </small></a> | 
-            <a href="{{route('home') . '#paintings'}}"><small> Paintings  </small></a> | {{$oneSeries->series_name}}
+            <a href="{{route('home') . '#paintings'}}"><small> Paintings  </small></a> 
         </div>
         <hr>
-        <div class="row justify-content-center row-series-name">
-            <h1>{{$oneSeries->series_name}}</h1>
-        </div>
+        <h1 class="text-center pt-2 pb-2"></h1>
     </div><!-- CONTAINER SERIES NAME END -->
 
     <!-- CONTAINER SERIES CONTENT -->
-    <div class="container">
-        @foreach($oneSeries->paintings as $painting)
-        <section class="item-wrapper mb-4">
-            <div class="row align-items-end justify-content-center">
-                <figure class="col-md-6">
-                    <a href="{{$painting->frontendUrl()}}">
-                        <img src="{{url('/skins/front/img/' . $painting->img_photo_name)}}" alt="{{$painting->name}}"/>
-                    </a>
-                    <div>
-                        <h5 class="text-left mb-0">
-                            "{{$painting->name}}"
-                        </h5>
-                    </div>
-                    <div id="paintDetails">
-                        <small class="text-muted">Painting, {{$painting->size}}</small>
-                    </div>
-                    <div id="paintPrice">
-                        <p>${{$painting->price}}</p>
-                    </div>
-                </figure>
+    <div class="container" id="series-content">
+        <div id="artist-statement" class="col-sm-12 text-center pb-2">
+            <article>
+                <p></p>
+            </article>
+        </div>
+        <section class="item-wrapper pb-2">
+            <div id="collection-holder" class="row justify-content-center">
+                <figure class="col-md-6"></figure>
             </div>
         </section>
-        @endforeach
 
-
+        <div id="template-series-content" style="display: none;">
+            <a>
+                <img/>
+            </a>
+            <p></p>
+        </div>
+        <div id="loader"></div>
     </div><!-- CONTAINER SERIES CONTENT END -->
 
 </main><!--MAIN End-->
@@ -60,20 +53,14 @@
 
             var targetElement = $('#mainNavbar');
 
-            var container = $('#containerNav');
-
-            var logo = container.find('a.navbar-brand');
-
             if ($(this).scrollTop() >= 0) {
 
-                logo.removeAttr('style');
-
-                targetElement.removeClass('bg-transparent');
-
-                targetElement.addClass('bg-white');
+                targetElement.slideDown(700);
 
             }
         }).trigger('scroll');
+
+
     });
 
     $(document).ready(function () {
@@ -82,7 +69,75 @@
             $("html, body").animate({scrollTop: 0}, 1500);
             return false;
         });
+
+        var hyperlink = $('#breadcrumbsCategory').find('a:odd');
+
+        hyperlink.after(' | {{$oneSeries->series_name}}');
+
+        var title = $('#categoryTitle').find('h1');
+
+        title.html('{{$oneSeries->series_name}}');
+
+        //console.log(title);
+
+        $.ajax({
+
+            "type": "GET",
+            "url": "{{route('series.ajax', ['id' => $oneSeries->id])}}",
+            "cache": false
+
+        }).done(function (response) {
+
+            var i;
+
+            for (i in response.paintings) {
+
+                var singlePaint = response.paintings[i];
+
+                var template = $('#template-series-content').clone();
+
+                var img = template.find('img');
+
+                img.attr({
+                    'src': "{{url('/skins/front/img')}}" + "/" + singlePaint.img_photo_name,
+                    'alt': singlePaint.name,
+                    'class': "pt-4"
+                });
+                var paintDesc = singlePaint.name + ", " + " " + singlePaint.year + ", " + " oil on canvas " + singlePaint.size + "cm";
+
+                var hyperlink = template.find('a');
+
+//                hyperlink.attr({
+//                    'href': "{{url('/skins/front/img')}}" + "/" + singlePaint.img_photo_name,
+//                    'data-caption': paintDesc
+//
+//
+//                });
+
+                hyperlink.html(img);
+
+                var paragraph = template.find('p');
+
+                paragraph.attr('class', 'pt-1 pb-1 pl-1').css('background-color', '#ffff');
+
+                hyperlink.appendTo('#collection-holder figure');
+
+                paragraph.html(paintDesc);
+
+                paragraph.appendTo('#collection-holder figure');
+
+                var seriesConcept = response.artistStatement;
+
+                $('#artist-statement').find('article p').html(seriesConcept);
+            }
+
+
+
+        });
+
     });
+
+
 
 
 </script>

@@ -22,9 +22,51 @@
 
     }
 
+    .form-control {
+
+        padding: 0;
+    }
+
+    .form-control input, .form-control textarea {
+
+        padding-left: 10px;
+    }
+
+    #categoryTitle h1 {
+
+        font-size: 1.2rem !important;
+    }
+
+    #collection-holder p {
+
+        font-size: 10px;
+    }
+
+    #breadcrumbsCategory {
+
+        font-size: 12px;
+    }
+
+    footer small {
+
+        font-size: 80% !important;
+        font-weight: 500 !important;
+    } 
+    
+     #navbarNav li {
+
+        border-top: 1px solid #f7f7f7;
+        line-height: 45px;
+        margin-left: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
 }
 
 @media(min-width:320px) {
+
+   
 
     .artist h3 {
 
@@ -33,7 +75,7 @@
     }
 
     a.navbar-brand > img {
-        width: 200px;
+        max-width: 100%;
         height: auto;
     }
 
@@ -41,19 +83,50 @@
         height: 360px;
 
     }
+    
+    #breadcrumbsCategory {
+
+        font-size: 15px;
+    }
+    
+    #collection-holder p {
+
+        font-size: 12px;
+    }
+
+    footer small {
+
+        font-size: 85% !important;
+        font-weight: 500 !important;
+    } 
+    
+    #categoryTitle h1 {
+
+        font-size: 1.5rem !important;
+    }
 
 }
 
 @media(min-width:576px){
 
-    a.navbar-brand > img {
+/*    a.navbar-brand > img {
         width: 350px;
         height: 80px;
-    }
-    
-     .series figure {
+    }*/
+
+    .series figure {
         height: 435px;
 
+    }
+    
+    #categoryTitle h1 {
+
+        font-size: 1.8rem !important;
+    }
+    
+    #collection-holder p {
+
+        font-size: 13px;
     }
 
 
@@ -61,6 +134,19 @@
 
 @media(min-width:768px){
 
+    #navbarNav li {
+
+        border-top: none;
+        line-height: none;
+        margin-left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    
+    #collection-holder p {
+
+        font-size: 12px;
+    }
 
 }
 
@@ -72,14 +158,23 @@
 
 @media(min-width:1200px){
 
+    #categoryTitle h1 {
+
+        font-size: 2.1rem !important;
+    }
     
+     #collection-holder p {
+
+        font-size: 13px;
+    }
 
 }
 
 
 @media only screen and (max-device-width: 1024px) {
-    .bgimg-2, .bgimg-3 {
-        background-attachment: scroll;
+    .series figure {
+
+        height: 360px;
     }
 
 
