@@ -13,7 +13,7 @@
     <!-- Portfolio Section Start -->
     <div class="container">
         <div class="row artist" id="about">
-            <div class="col-md-12 text-center pb-md-3">
+            <div class="col-md-12 text-center pb-3">
                 <h3>BIOGRAPHY</h3>
             </div>
         </div>
@@ -23,7 +23,7 @@
                     <img src="{{url('/skins/front/img/about.jpg')}}" alt="Artist picture in atelier"/>
                 </figure>
             </div>
-            <div id="biography"  class="col-md-12 col-lg-6 pt-lg-5">
+            <div id="biography"  class="col-md-12 col-lg-6 pt-2 pb-2">
                 <article class="text-center">
                     <p>
                         <strong>Petar Smiljanic</strong> was born in Valjevo, Serbia in 1985. 
@@ -53,7 +53,7 @@
                 <p><i>Click on the image to see all paintings from collection</i></p>
             </div>
             @foreach(\App\Models\Series::get() as $oneSeries)
-            <div class="col-sm-12 col-md-6 col-lg-4 text-center">
+            <div class="col-sm-12 col-md-6 col-lg-4 text-center pb-4">
                 <a  href="{{$oneSeries->frontendUrl()}}">
                     <figure class="notice">
                         <img src="{{url('/skins/front/img/' . $oneSeries->series_photo_filename)}}" class="image" alt="{{$oneSeries->series_name}}"/>
@@ -76,7 +76,7 @@
 
     <!-- Contact Section Start -->
     <div class="container">
-        <div class="row contact mb-md-4" id="contact">
+        <div class="row contact pb-md-4" id="contact">
             <div class="col-md-12 text-center pb-md-3">
                 <h3>GET IN TOUCH</h3>
                 <p>
@@ -90,7 +90,7 @@
                     <img src="{{url('/skins/front/img/contact_image.jpg')}}" alt=""/>
                 </figure>
             </div>
-            <div class="col-md-12 col-lg-7">
+            <div class="col-md-12 col-lg-7 pb-4 pt-2 pt-lg-0">
                 <div id="message" class="row"></div>
                 <form method="post" action="" class="form-control" id="contactForm">
                     {{csrf_field()}}
@@ -161,7 +161,6 @@
                             @endforeach
                         </div>  
                         @endif
-
                     </div>
                     <div class="form-group pt-1">
                         <button type="submit" class="btn btn-dark px-4" data-action="submit">
@@ -169,26 +168,12 @@
                             Send Message
                         </button>
                     </div>
-
-                    <!--                    <div class="g-recaptcha" data-sitekey="6LeY-1MUAAAAAEQoGdfDAfzssnt-lydlV-KsNbid"></div>-->
-                    <div class="error pt-3" id="errorRecaptcha"></div>
-                    @if($errors->has('g-recaptcha-response'))
-                    <div class="form-errors text-danger">
-                        @foreach($errors->get('g-recaptcha-response') as $errorMessage)
-                        <label class="error">{{$errorMessage}}</label>
-                        @endforeach
-                    </div>  
-                    @endif
                 </form>
             </div>
         </div>
     </div> <!-- Contact Section End -->
 </main><!-- Main Layout End -->
 @endsection
-
-@push('header_css') 
-<script src='https://www.google.com/recaptcha/api.js'></script>
-@endpush
 
 @push('footer_javascript')
 
@@ -197,8 +182,6 @@
 
 //Form Validation
 $(document).ready(function () {
-
-
 
     $(".form-control").validate({
         highlight: function (element) {
@@ -229,8 +212,6 @@ $(document).ready(function () {
                 required: true,
                 minlength: 5
             }
-
-
         },
         messages: {
             contactName: {
@@ -249,7 +230,6 @@ $(document).ready(function () {
 
                 required: "Please enter subject"
             }
-
 
         },
         errorElement: 'p',
@@ -297,8 +277,7 @@ $(document).ready(function () {
             window.location.hash = href;
         });
 
-        //var links = $('#navbarNav').find('ul li a');
-
+       
         if ($(window).width() < 768) {
 
             $('a[href^="#"]').on('click', function () {
@@ -332,7 +311,7 @@ $(document).ready(function () {
         var email = $('[ name="contactEmail" ]').val();
         var message = $('[ name="contactMessage" ]').val();
         var subject = $('[ name="subject" ]').val();
-        
+
         $.ajax({
 
             'type': 'POST',
@@ -377,8 +356,6 @@ $(document).ready(function () {
 
 
             var errors = data.responseJSON.errors;
-//
-//        console.log(errors.captcha);
 
             if (data.status !== 200 && data.readyState !== 4) {
 
@@ -392,25 +369,9 @@ $(document).ready(function () {
                 $('#message').html(errorMessage);
             }
 
-
-
-
-            //var captchaValue = grecaptcha.getResponse();
-
-//        if (captchaValue === '') {
-//            $('#errorRecaptcha')
-//                    .addClass("has-danger")
-//                    .html('<p>' + errors.captcha + '</p>');
-//
-//            //console.log(data.readyState);
-//        }
-
         });
 
-
-
     });
-
 
 });
 

@@ -104,6 +104,11 @@
 
         font-size: 1.5rem !important;
     }
+    
+    .caption h5 {
+        
+        margin-bottom: 1.5rem;
+    }
 
 }
 
