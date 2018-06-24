@@ -78,6 +78,7 @@
     <div class="container">
         <div class="row contact pb-md-4" id="contact">
             <div class="col-md-12 text-center pb-md-3">
+                <div id="message" class="row"></div>
                 <h3>GET IN TOUCH</h3>
                 <p>
                     For all inquiries please contact me at 
@@ -85,13 +86,15 @@
                     or fill out the form
                 </p>
             </div>
+
             <div class="col-md-12 col-lg-5 text-center">
                 <figure >
                     <img src="{{url('/skins/front/img/contact_image.jpg')}}" alt=""/>
                 </figure>
             </div>
+
             <div class="col-md-12 col-lg-7 pb-4 pt-2 pt-lg-0">
-                <div id="message" class="row"></div>
+
                 <form method="post" action="" class="form-control" id="contactForm">
                     {{csrf_field()}}
                     <div class="row">
@@ -181,209 +184,207 @@
 
 
 //Form Validation
-$(document).ready(function () {
+    $(document).ready(function () {
 
-    $(".form-control").validate({
-        highlight: function (element) {
-            $(element).closest('.form-group').addClass("has-danger");
-            $(element).addClass("form-control-danger");
-        },
-        unhighlight: function (element) {
-            $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
-            $(element).removeClass('form-control-danger').addClass('form-control-success');
-        },
-        rules: {
-            contactName: {
-                required: true,
-                minlength: 2
+        $(".form-control").validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass("has-danger");
+                $(element).addClass("form-control-danger");
             },
-
-            contactEmail: {
-                required: true,
-                email: true
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
+                $(element).removeClass('form-control-danger').addClass('form-control-success');
             },
+            rules: {
+                contactName: {
+                    required: true,
+                    minlength: 2
+                },
 
-            contactMessage: {
-                required: true,
-                minlength: 5
+                contactEmail: {
+                    required: true,
+                    email: true
+                },
+
+                contactMessage: {
+                    required: true,
+                    minlength: 5
+                },
+
+                subject: {
+                    required: true,
+                    minlength: 5
+                }
             },
+            messages: {
+                contactName: {
+                    required: "Please enter your name"
+                },
 
-            subject: {
-                required: true,
-                minlength: 5
+                contactEmail: {
+                    required: "Please enter your email address"
+                },
+
+                contactMessage: {
+                    required: "Please write something"
+                },
+
+                subject: {
+
+                    required: "Please enter subject"
+                }
+
+            },
+            errorElement: 'p',
+            errorPlacement: function (error, element) {
+                error.appendTo($(element).closest('.form-group').find('.error').fadeIn('slow'));
             }
-        },
-        messages: {
-            contactName: {
-                required: "Please enter your name"
-            },
-
-            contactEmail: {
-                required: "Please enter your email address"
-            },
-
-            contactMessage: {
-                required: "Please write something"
-            },
-
-            subject: {
-
-                required: "Please enter subject"
-            }
-
-        },
-        errorElement: 'p',
-        errorPlacement: function (error, element) {
-            error.appendTo($(element).closest('.form-group').find('.error').fadeIn('slow'));
-        }
-    });
-
-
-    $(this).on('scroll', function () {
-
-        var targetElement = $('#mainNavbar');
-
-        if ($(this).scrollTop() > 200) {
-
-            targetElement.slideDown(700);
-
-        } else {
-
-            targetElement.slideUp(700);
-
-
-        }
-    }).trigger('scroll');
-
-    var navHome = $('.nav-link:first');
-
-    $('#smooth-scrolling').on('click', function () {
-        $("html, body").animate({scrollTop: 0}, 800);
-        return false;
-    });
-
-    navHome.on('click', function () {
-        $("html, body").animate({scrollTop: 0}, 800);
-        return false;
-    });
-
-
-    $('a[href^="#"]').on('click', function () {
-        var href = $.attr(this, 'href');
-
-        $('html, body').animate({
-            scrollTop: $(href).offset().top
-        }, 500, function () {
-            window.location.hash = href;
         });
 
-       
-        if ($(window).width() < 768) {
 
-            $('a[href^="#"]').on('click', function () {
+        $(this).on('scroll', function () {
 
-                $('button.navbar-toggler').trigger('click');
+            var targetElement = $('#mainNavbar');
+
+            if ($(this).scrollTop() > 200) {
+
+                targetElement.slideDown(700);
+
+            } else {
+
+                targetElement.slideUp(700);
+
+
+            }
+        }).trigger('scroll');
+
+        var navHome = $('.nav-link:first');
+
+        $('#smooth-scrolling').on('click', function () {
+            $("html, body").animate({scrollTop: 0}, 800);
+            return false;
+        });
+
+        navHome.on('click', function () {
+            $("html, body").animate({scrollTop: 0}, 800);
+            return false;
+        });
+
+
+        $('a[href^="#"]').on('click', function () {
+            var href = $.attr(this, 'href');
+
+            $('html, body').animate({
+                scrollTop: $(href).offset().top
+            }, 500, function () {
+                window.location.hash = href;
+            });
+
+
+            if ($(window).width() < 768) {
+
+                $('a[href^="#"]').on('click', function () {
+
+                    $('button.navbar-toggler').trigger('click');
+
+                });
+
+            }
+
+            return false;
+        });
+
+
+        $('#contactForm').on('submit', function (e) {
+
+            e.preventDefault();
+
+            function removeClass(form, element, className) {
+
+                var target = form.find(element);
+
+                target.removeClass(className);
+
+                return form[0].reset();
+
+            }
+
+
+            var name = $('[ name="contactName" ]').val();
+            var email = $('[ name="contactEmail" ]').val();
+            var message = $('[ name="contactMessage" ]').val();
+            var subject = $('[ name="subject" ]').val();
+
+            $.ajax({
+
+                'type': 'POST',
+                'url': "{{route('contact')}}",
+                'data': {
+                    'contactName': name,
+                    'contactEmail': email,
+                    'contactMessage': message,
+                    'subject': subject,
+                    '_token': '{{csrf_token()}}'
+                },
+
+                beforeSend: function () {
+
+                    if (name !== '' && email !== '' && message !== '' && subject !== '') {
+
+                        var target = $('#contactForm').find('[data-action="submit"]');
+
+                        var newContent = '<i class="fa fa-paper-plane" aria-hidden="true"></i>' + ' Sending Message...';
+
+                        target.html(newContent);
+                    }
+
+                }
+
+
+            }).done(function (data) {
+
+                if ($(window).width() < 1024) {
+
+                    var contact = $('a[href="#contact"]');
+
+                    contact.trigger('click');
+
+
+                }
+
+                $('#message').html(data.success);
+
+                removeClass($('#contactForm'), 'div.form-group', 'has-success');
+
+
+                var target = $('#contactForm').find('[data-action="submit"]');
+
+                var deafultContent = '<i class="fa fa-paper-plane" aria-hidden="true"></i>' + ' Send Message';
+
+                target.html(deafultContent);
+
+            }).fail(function (data) {
+
+                var errors = data.responseJSON.errors;
+
+                if (data.status !== 200 && data.readyState !== 4) {
+
+                    var errorMessage = '<div class="col-sm-12">' +
+                            '<div class="alert alert-danger" role="alert">' +
+                            '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                            'Ups... Something went wrong!' +
+                            '</div>' +
+                            '</div>';
+
+                    $('#message').html(errorMessage);
+                }
 
             });
 
-        }
-
-        return false;
-    });
-
-
-    $('#contactForm').on('submit', function (e) {
-
-        e.preventDefault();
-
-        function removeClass(form, element, className) {
-
-            var target = form.find(element);
-
-            target.removeClass(className);
-
-            return form[0].reset();
-
-        }
-
-
-        var name = $('[ name="contactName" ]').val();
-        var email = $('[ name="contactEmail" ]').val();
-        var message = $('[ name="contactMessage" ]').val();
-        var subject = $('[ name="subject" ]').val();
-
-        $.ajax({
-
-            'type': 'POST',
-            'url': "{{route('contact')}}",
-            'data': {
-                'contactName': name,
-                'contactEmail': email,
-                'contactMessage': message,
-                'subject': subject,
-                '_token': '{{csrf_token()}}'
-            },
-
-            beforeSend: function () {
-
-                if (name !== '' && email !== '' && message !== '' && subject !== '') {
-
-                    var target = $('#contactForm').find('[data-action="submit"]');
-
-                    var newContent = '<i class="fa fa-paper-plane" aria-hidden="true"></i>' + ' Sending Message...';
-
-                    target.html(newContent);
-                }
-
-            }
-
-
-        }).done(function (data) {
-
-            $('#message').html(data.success);
-
-            removeClass($('#contactForm'), 'div.form-group', 'has-success');
-
-
-            var target = $('#contactForm').find('[data-action="submit"]');
-
-            var deafultContent = '<i class="fa fa-paper-plane" aria-hidden="true"></i>' + ' Send Message';
-
-            target.html(deafultContent);
-
-        }).fail(function (data) {
-
-
-
-            var errors = data.responseJSON.errors;
-
-            if (data.status !== 200 && data.readyState !== 4) {
-
-                var errorMessage = '<div class="col-sm-12">' +
-                        '<div class="alert alert-danger" role="alert">' +
-                        '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                        'Ups... Something went wrong!' +
-                        '</div>' +
-                        '</div>';
-
-                $('#message').html(errorMessage);
-            }
-
         });
 
+
     });
-
-});
-
-
-
-
-
-
-
-
-
-
 
 
 </script>
