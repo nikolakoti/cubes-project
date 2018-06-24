@@ -107,13 +107,6 @@
 
                 var hyperlink = template.find('a');
 
-//                hyperlink.attr({
-//                    'href': "{{url('/skins/front/img')}}" + "/" + singlePaint.img_photo_name,
-//                    'data-caption': paintDesc
-//
-//
-//                });
-
                 hyperlink.html(img);
 
                 var paragraph = template.find('p');
@@ -131,9 +124,26 @@
                 $('#artist-statement').find('article p').html(seriesConcept);
             }
 
+            var paintsURL = [response.paintsURL];
 
+            var hyperlinks = $('#collection-holder a');
+
+            for (var x = 0; x < hyperlinks.length; x++) {
+
+                for (var index in paintsURL) {
+
+                    var singlePaintURL = paintsURL[index];
+                }
+
+                $(hyperlinks[x]).attr({
+                    'href': singlePaintURL[x]
+                });
+
+            }
 
         });
+
+
 
     });
 

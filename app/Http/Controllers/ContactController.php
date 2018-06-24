@@ -29,7 +29,7 @@ class ContactController extends Controller {
             $messageContent = '<div class="col-sm-12">
                         <div class="alert alert-info alert-dismissable">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            Thank you for contacting me! I reply you back soon.
+                            Thank you for contacting me!<br> I reply you back soon.
                         </div>
                     </div>';
 

@@ -1,191 +1,100 @@
 @extends('front.layout')
 
-@section('head_title', $painting->name . ' ' .
-' | ' . trans('front.painting_title'))
+@section('head_title', $painting->name)
 
 @section('content')
 
-<main id="onePaintDetails">
-    <div class="container">
-        <div class="row paint-name" id="paintName">
-            <div class="col-md-12">
-                <h3><i>{{$painting->name}}</i></h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" id="breadcrumbs">
-                <a href="{{route('home') . '#paintings'}}"><small> Paintings </small></a> | 
+<main id="onePaintDetails" style="background-color: #f7f7f7;">
+    <div class="container" id="categoryTitle">
+        <!--        <div class="col-md-12 text-muted" id="breadcrumbsCategory">
+                    <a href="{{route('home')}}"><small> Home </small></a> |
+                    <a href="{{route('home') . '#paintings'}}"><small> Paintings </small></a> | 
+                    <a href="{{$painting->frontendSeriesUrl()}}"><small>{{$painting->series->series_name}}</small></a>
+                    |<span> {{$painting->name}}</span>
+                </div>
+                <hr>-->
 
-
-                <a href="{{$painting->frontendSeriesUrl()}}"><small>{{$painting->series->series_name}}</small></a>
-
-
-                |<span> {{$painting->name}}</span>
-            </div>
-        </div>
-        <section class="paint" >
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <figure id="pointer">
-
+        <section class="item-wrapper" style="padding-top: 90px; padding-bottom: 90px;">
+            <div class="row justify-content-center">
+                <figure class="col-md-8" >
+                    <a class="image-popup-no-margins" href="{{url('skins/front/img/' . $painting->img_photo_name)}}">
                         <img src="{{url('skins/front/img/' . $painting->img_photo_name)}}">
+                    </a>
 
-                    </figure>
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <div class="row paint-details">
-                        <div class="col-12">
-                            <h3>{{$painting->name}}</h3>
-                            <p>
-                                <a href="{{$painting->frontendSeriesUrl()}}">
-                                    {{$painting->series->series_name}}
-                                </a><br>
-                                Painting<br>
-                                <small>
-                                    Size: {{$painting->size}}cm
-                                </small>
-                                <br>
-                                <i><small>Shipping Info</small></i>
-                            </p> 
-                        </div>
-                        <div class="col-12">
-                            <h5>${{$painting->price}} USD</h5>
-                            <button type="button" class="button-cart">
-                                Add to 
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                        <div class="col-12">
-                            <p>
-                                <br>
-                                <i class="fa fa-check"></i> Shipping included<br>
-                                <i class="fa fa-check"></i> 7-day money back guarantee<br>
-                                <i class="fa fa-star"></i> 
-                                <i class="fa fa-star"></i> 
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                Trustpilot Score 
-                            </p>
-                        </div>
+                    <div class="col-md-12 pt-4 pb-3 art-description" style="background-color: #fff;">
+                        <h4 class="text-uppercase">{{$painting->name}}</h4>
+                        <p>
+                            <br>
+                            Size: {{$painting->size}}cm
+                            <br>
+                            Year: {{$painting->year}}
+                            <br>
+                            Series: 
+                            <a href="{{$painting->frontendSeriesUrl()}}">{{$painting->series->series_name}}</a>
+                            <br><br>
+                            {{$painting->description}} 
+                        </p>  
                     </div>
-                </div>
-            </div>
-        </section>
-        <div class="row">
-            <div class="col-12">
-                <h4>Art Description</h4>
-            </div>
-        </div>
-        <section class="art-description">
-            <div class="row">
-                <div class="col-12 text-justify">
-                    <p>
-                        <i>"{{$painting->name}}"</i>
-                        <br>
-                        Size: {{$painting->size}}cm
-                        <br>
-                        Year: {{$painting->year}}
-                        <br>
-                        Series: 
-                        <a href="{{$painting->frontendSeriesUrl()}}">{{$painting->series->series_name}}</a>
-                        <br><br>
-                        {{$painting->description}} 
-                    </p>  
-                </div>
+                </figure>
             </div>
         </section>
     </div>
-
 </main>
 
-<main class="fullPaint" style="display: none;">
-    <div class="container">
-        <nav class="navbar navbar-light bg-transparent" id="fullPagePaint">
-            <a class="navbar-brand" href="{{route('home')}}">
-                <img src="{{url('/skins/front/img/artist_signature.jpg')}}" alt="Artist Signature">
-            </a>
-            <button 
-                type="button" 
-                class="btn btn-secondary" 
-                data-toggle="tooltip" 
-                data-placement="bottom" 
-                title="Close"
-                >
-                <b>x</b>
-            </button>
-        </nav>
-        <div class="full-page-paint">
-            <a href="">
-                <img src="{{url('skins/front/img/' . $painting->img_photo_name)}}">
-            </a>
-        </div>
-    </div>
-</main>
 
 @endsection
 
+@push('header_css')
+<link href="{{url('/skins/front/js/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css"/>
+@endpush
+
 
 @push('footer_javascript')
+<script src="{{url('/skins/front/js/magnific-popup/magnific-popup.min.js')}}" type="text/javascript"></script>
 
 <script>
 
-    $(document).ready(function () {
+$(document).ready(function () {
 
-        $(window).on('scroll', function () {
+    $(window).on('scroll', function () {
 
-            var targetElement = $('#mainNavbar');
+        var targetElement = $('#mainNavbar');
 
-            var container = $('#containerNav');
+        if ($(this).scrollTop() >= 0) {
 
-            var logo = container.find('a.navbar-brand');
+            targetElement.slideDown(700);
 
-            if ($(this).scrollTop() >= 0) {
+        }
+    }).trigger('scroll');
 
-                logo.removeAttr('style');
+    $('#smooth-scrolling').on('click', function () {
+        $("html, body").animate({scrollTop: 0}, 500);
+        return false;
+    });
 
-                targetElement.removeClass('bg-transparent');
+    $('.image-popup-no-margins').magnificPopup({
+        type: 'image',
+        removalDelay: 300,
+        closeOnContentClick: true,
+        closeBtnInside: false,
+        fixedContentPos: true,
+        mainClass: 'mfp-no-margins mfp-with-zoom',
+        image: {
+            verticalFit: false
+        },
+        zoom: {
+            enabled: true,
+            duration: 300,
+            easing: 'ease-in-out',
 
-                targetElement.addClass('bg-white');
-
+            opener: function (openerElement) {
+                return openerElement.is('img') ? openerElement : openerElement.find('img');
             }
-        }).trigger('scroll');
+        }
     });
 
-    $(document).ready(function () {
-        $('#smooth-scrolling').on('click', function () {
-            $("html, body").animate({scrollTop: 0}, 1000);
-            return false;
-        });
-    });
 
-    $(document).ready(function () {
-
-        $('#pointer').on('click', function () {
-
-            $('#mainNavbar').hide();
-            $('#onePaintDetails').hide();
-            $('#footer').hide();
-            $('main.fullPaint').removeAttr('style');
-        });
-    });
-
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-
-    $(document).ready(function () {
-        var targetElement = $('[data-toggle="tooltip"]');
-
-        var currentPageURL = window.location.pathname;
-        
-        $(targetElement).on('click', function () {
-            window.location.href = currentPageURL;
-
-
-        });
-    });
-
+});
 
 </script>
 

@@ -19,16 +19,20 @@ class SeriesController extends Controller {
     }
 
     public function ajax($id) {
-
-
+        
+       
 
         $oneSeries = Series::findOrFail($id);
-
-
+        
+        foreach ($oneSeries->paintings as $paint) {
+            
+            $paintsUrl[] = $paint->frontendUrl();
+        }
 
         return response()->json([
                     'paintings' => $oneSeries->paintings,
-                    'artistStatement' => $oneSeries->description
+                    'artistStatement' => $oneSeries->description,
+                    "paintsURL" => $paintsUrl
         ]);
     }
 

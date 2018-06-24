@@ -250,49 +250,44 @@
 
                 targetElement.slideDown(700);
 
-            } else {
+            } else if ($(this).scrollTop() === 0) {
 
                 targetElement.slideUp(700);
 
-
             }
+
         }).trigger('scroll');
 
-        var navHome = $('.nav-link:first');
-
         $('#smooth-scrolling').on('click', function () {
-            $("html, body").animate({scrollTop: 0}, 800);
+            $("html, body").animate({scrollTop: 0}, 500);
             return false;
         });
 
-        navHome.on('click', function () {
-            $("html, body").animate({scrollTop: 0}, 800);
-            return false;
-        });
+        $('a[href^="#"]').on('click', function (e) {
+            e.preventDefault();
 
-
-        $('a[href^="#"]').on('click', function () {
-            var href = $.attr(this, 'href');
-
-            $('html, body').animate({
-                scrollTop: $(href).offset().top
-            }, 500, function () {
-                window.location.hash = href;
+            $('a[href^="#"]').each(function () {
+                $(this).removeClass('active');
+                if ($(window).width() < 768) {
+                    $('button.navbar-toggler').trigger('click');
+                }
             });
 
+            $(this).addClass('active');
 
-            if ($(window).width() < 768) {
+            var target = this.hash,
+                    menu = target;
 
-                $('a[href^="#"]').on('click', function () {
+            target = $(target);
+            $('html, body').stop().animate({
+                'scrollTop': target.offset().top
+            }, 500, 'swing', function () {
+                window.location.hash = menu;
 
-                    $('button.navbar-toggler').trigger('click');
-
-                });
-
-            }
-
-            return false;
+            });
         });
+
+
 
 
         $('#contactForm').on('submit', function (e) {
@@ -345,10 +340,9 @@
 
                 if ($(window).width() < 1024) {
 
-                    var contact = $('a[href="#contact"]');
-
-                    contact.trigger('click');
-
+                    $('html,body').animate({
+                        scrollTop: $("#contact").offset().top},
+                            'slow');
 
                 }
 
